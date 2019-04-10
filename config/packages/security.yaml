@@ -16,10 +16,12 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
+            anonymous: ~
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
+#                providers: app_user_provider
+
 
             # activate different ways to authenticate
 
