@@ -17,5 +17,10 @@
         <li>Your template at <code><a href="{{ '/Users/xearts/MySymfonyProjectsPractice/sym4-TaskApp/templates/admin/member-regist.html.twig'|file_link(0) }}">templates/admin/member-regist.html.twig</a></code></li>
     </ul>
     <p>MemberRegistPage</p>
+    <div class="container">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+    </div>
 </div>
 {% endblock %}
