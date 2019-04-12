@@ -22,7 +22,7 @@ class AdminMemberRegistController extends AbstractController
   public function show()
   {
     return $this->render('admin/member-show.html.twig', [
-      'controller_name' => 'AdminMemberShowtController',
+      'controller_name' => 'AdminMemberRegisttController',
     ]);
   }
   /**
@@ -31,7 +31,16 @@ class AdminMemberRegistController extends AbstractController
   public function serch()
   {
     return $this->render('admin/member-show.html.twig', [
-      'controller_name' => 'AdminMemberShowtController',
+      'controller_name' => 'AdminMemberRegistController',
+    ]);
+  }
+  /**
+   * @Route("/admin/member/edit", name="admin_memmer_edit")
+   */
+  public function edit()
+  {
+    return $this->render('admin/member-edit.html.twig', [
+      'controller_name' => 'AdminMemberRegistController',
     ]);
   }
 }
