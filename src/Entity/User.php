@@ -49,11 +49,13 @@ class User implements UserInterface
     private $famillyname;
 
     /**
+     * @var \DateTime
      * @ORM\Column(type="datetime")
      */
     private $created_at;
 
     /**
+     * @var \DateTime
      * @ORM\Column(type="datetime")
      */
     private $updated_at;
@@ -172,23 +174,44 @@ class User implements UserInterface
         return $this;
     }
 
+  /**
+   * Get createdAt
+   *
+   * @return \DateTime
+   */
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->created_at;
     }
-
+  /**
+   * Set createdAt
+   *
+   * @param \DateTime $createdAt
+   *
+   * @return User
+   */
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
 
         return $this;
     }
-
+  /**
+   * Get uodatedAt
+   *
+   * @return \DateTime
+   */
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updated_at;
     }
-
+  /**
+   * Set updatedAt
+   *
+   * @param \DateTime $updatedAt
+   *
+   * @return user
+   */
     public function setUpdatedAt(\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
