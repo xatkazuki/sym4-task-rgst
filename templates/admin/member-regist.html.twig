@@ -19,7 +19,28 @@
     <p>MemberRegistPage</p>
     <div class="container">
     {{ form_start(form) }}
-    {{ form_widget(form) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.famillyname) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.password) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.github) }}
+        {{ form_row(form.save) }}
+
+        <div style="display: none;">
+            {#<input type="datetime" value="{{ CreatedAt.date }}">#}
+            {{ form_row(form.created_at) }}
+        </div>
+        <div style="display: none;">
+            {#<input type="datetime" value="">#}
+            {{ form_row(form.updated_at) }}
+
+            {#{{ UpdatedAt }}#}
+        </div>
+        {{ form_rest(form) }}
+
+        {#{{ form_widget(form) }}#}
     {{ form_end(form) }}
     </div>
 </div>
