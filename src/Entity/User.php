@@ -60,6 +60,11 @@ class User implements UserInterface
      */
     private $updated_at;
 
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $division;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -215,6 +220,18 @@ class User implements UserInterface
     public function setUpdatedAt(\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getDivision(): ?string
+    {
+        return $this->division;
+    }
+
+    public function setDivision(string $division): self
+    {
+        $this->division = $division;
 
         return $this;
     }

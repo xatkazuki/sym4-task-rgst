@@ -29,8 +29,6 @@ class AdminMemberRegistController extends AbstractController
       echo'</pre>';
 
       $form = $this->createForm(MemberType::class,$member);
-//      $form->add('created_time','datetime',['date_widget' => 'text']);
-//      $form->add('updated_at',,array());
       $form->add('save', SubmitType::class);
       $form->handleRequest($request);
 
@@ -60,16 +58,31 @@ class AdminMemberRegistController extends AbstractController
   /**
    * @Route("/admin/member/show", name="admin_memmer_show")
    */
-  public function show()
+  public function show(Request $request)
   {
     $entityManager=$this->getDoctrine()->getManager();
     $memberList = $this->getDoctrine()
       ->getRepository(User::class)
       ->findAll();
 
+    $edit_member = new User();
+    $form = $this->createForm(MemberType::class,$edit_member);
+
+    $form =$this->createForm(MemberType::class,$edit_member);
+    $form -> add('id');
+    $form ->add('name', HiddenType::class,array());
+    $form ->add('email', HiddenType::class,array());
+    $form ->add('github', HiddenType::class,array());
+    $form ->add('famillyname', HiddenType::class,array());
+    $form ->add('password', HiddenType::class,array());
+    $form ->add('division', HiddenType::class,array());
+    $form -> add('serch', SubmitType::class, array('label' => 'serch'));
+
+    $form->handleRequest($request);
     return $this->render('admin/member-show.html.twig', [
       'controller_name' => 'AdminMemberRegisttController',
       'MemberList' => $memberList,
+      'form' => $form ->createView(),
     ]);
   }
   /**
@@ -85,7 +98,6 @@ class AdminMemberRegistController extends AbstractController
           'name' => $user_name
         )
       );
-
     return $this->render('admin/member-show.html.twig', [
       'controller_name' => 'AdminMemberRegisttController',
       'MemberList' => $memberData,

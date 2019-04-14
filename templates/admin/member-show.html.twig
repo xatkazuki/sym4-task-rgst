@@ -19,6 +19,24 @@
     <p>MemberShowPage</p>
 
     <div>
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.id) }}
+        {{ form_row(form.serch,{"attr":{"class":"btn btn-primary"}}) }}
+        <div style="display: none;">
+            {{ form_row(form.created_at) }}
+        </div>
+        <div style="display: none;">
+            {{ form_row(form.updated_at) }}
+        </div>
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+    </div>
+
+    <br>
+    <br>
+
+    <div>
         {% for memberItem in MemberList %}
             <div>
                 <b>NAME</b><br><span><span>{{ memberItem.famillyname }}</span>/{{ memberItem.name }}</span>
@@ -28,6 +46,9 @@
             </div>
             <div>
                 <b>GitHub</b><br><span>{{ memberItem.github }}</span>
+            </div>
+            <div>
+                <b>契約区分</b><br><span>{{ memberItem.division }}</span>
             </div>
 
             <hr>
