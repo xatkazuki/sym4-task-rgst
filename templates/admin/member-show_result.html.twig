@@ -16,7 +16,7 @@
         <li>Your controller at <code><a href="{{ '/Users/xearts/MySymfonyProjectsPractice/sym4-TaskApp/src/Controller/AdminMemberRegistController.php'|file_link(0) }}">src/Controller/AdminMemberRegistController.php</a></code></li>
         <li>Your template at <code><a href="{{ '/Users/xearts/MySymfonyProjectsPractice/sym4-TaskApp/templates/admin/member-show.html.twig'|file_link(0) }}">templates/admin/member-show.html.twig</a></code></li>
     </ul>
-    <p>MemberShowPage</p>
+    <p>MemberSerchPage</p>
 
     <div>
         {{ form_start(form) }}
@@ -34,13 +34,13 @@
         {#</div>#}
         {{ form_rest(form) }}
         {{ form_end(form) }}
+        {#</form>#}
     </div>
 
-    <br>
-    <br>
 
     <div class="container">
-        {% for memberItem in MemberList %}
+        {#{{ MemberSerchId }}#}
+        {% for memberItem in MemberSerchResult %}
             <div>
                 <b>NAME</b><br><span><span>{{ memberItem.famillyname }}</span>/{{ memberItem.name }}</span>
             </div>
