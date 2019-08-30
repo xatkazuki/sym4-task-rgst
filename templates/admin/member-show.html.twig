@@ -17,7 +17,6 @@
         <li>Your template at <code><a href="{{ '/Users/xearts/MySymfonyProjectsPractice/sym4-TaskApp/templates/admin/member-show.html.twig'|file_link(0) }}">templates/admin/member-show.html.twig</a></code></li>
     </ul>
     <p>MemberShowPage</p>
-
     <div>
         {{ form_start(form) }}
         {{ form_errors(form) }}
@@ -26,12 +25,6 @@
 
         <br>
 
-        {#<div style="display: none;">#}
-            {#{{ form_row(form.created_at) }}#}
-        {#</div>#}
-        {#<div style="display: none;">x#}
-            {#{{ form_row(form.updated_at) }}#}
-        {#</div>#}
         {{ form_rest(form) }}
         {{ form_end(form) }}
     </div>

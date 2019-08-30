@@ -63,16 +63,6 @@ class AdminMemberRegistController extends AbstractController
       ->findAll();
 
     $serch_member = new User();
-//    $serch_member
-//      ->setName('dummy')
-//      ->setPassword('dummy')
-//      ->setFamillyname('dummy')
-//      ->setGithub('dummy@github.com')
-//      ->setEmail('test@test.com')
-//      ->setPassword('dummy')
-//      ->setDivision('正社員')
-//      ->setCreatedAt(new \DateTime())
-//      ->setUpdatedAt(new \DateTime());
 
 //    $form =$this->createForm(MemberSerchType::class,$serch_member);
     $form =$this->createForm(MasterDataType::class,$serch_member);
@@ -84,28 +74,14 @@ class AdminMemberRegistController extends AbstractController
     $form->handleRequest($request);
 
     if($form->isSubmitted() && $form->isValid()){
+      $user =new User();
 
       $id=($form->get('id')->getData());
 
-      var_dump($id);
-
-      $user =new User();
-
-      $entityManager=$this->getDoctrine()->getManager();
-      $serch_user = $this->getDoctrine()->getManager()
-        ->getRepository(User::class)
-        ->findBy(
-          array(
-            'id' => $id,
-          ));
-
       return $this->redirectToRoute('admin_member_show_serch_result', [
-        'MemberSerchResult'=> $serch_user,
-//          'MemberSerchId'=> $id,
-
+        'id' => $id,
       ]);
     }
-
     return $this->render('admin/member-show.html.twig', [
       'controller_name' => 'AdminMemberRegisttController',
       'MemberList' => $memberList,
@@ -129,16 +105,6 @@ class AdminMemberRegistController extends AbstractController
         )
       );
     $serch_member = new User();
-//    $serch_member
-//      ->setName('dummy')
-//      ->setPassword('dummy')
-//      ->setFamillyname('dummy')
-//      ->setGithub('dummy@github.com')
-//      ->setEmail('test@test.com')
-//      ->setPassword('dummy')
-//      ->setDivision('正社員')
-//      ->setCreatedAt(new \DateTime())
-//      ->setUpdatedAt(new \DateTime());
 
 //    $form =$this->createForm(MemberSerchType::class,$serch_member);
     $form =$this->createForm(MasterDataType::class,$serch_member);
@@ -158,29 +124,29 @@ class AdminMemberRegistController extends AbstractController
   public function serch_result(Request $request)
   {
     $serch_member = new User();
-//    $serch_member
-//      ->setName('dummy')
-//      ->setPassword('dummy')
-//      ->setFamillyname('dummy')
-//      ->setGithub('dummy@github.com')
-//      ->setEmail('test@test.com')
-//      ->setPassword('dummy')
-//      ->setDivision('正社員')
-//      ->setCreatedAt(new \DateTime())
-//      ->setUpdatedAt(new \DateTime());
 
 //    $form =$this->createForm(MemberSerchType::class,$serch_member);
     $form =$this->createForm(MasterDataType::class,$serch_member);
 
     $form
+
       ->add('id',IntegerType::class)
       ->add('serch', SubmitType::class, array('label' => 'serch'));
 
     $form->handleRequest($request);
 
+    echo '<pre>';
+
+    $i =(int)$_GET['id'];
+
+    var_dump($i);
+    echo '</pre>';
+
     if($form->isSubmitted() && $form->isValid()) {
 
       $id = ($form->get('id')->getData());
+//      var_dump($_GET["master_data"]["id"]);
+//      $i = (int)$_GET;
 
 //      $entityManager = $this->getDoctrine()->getManager();
       $serch_user = $this->getDoctrine()->getManager()
@@ -200,8 +166,9 @@ class AdminMemberRegistController extends AbstractController
       ->getRepository(User::class)
       ->findBy(
         array(
-          'id' => 2,
+          'id' => $i,
         ));
+
     return $this->render('admin/member-show_result.html.twig', [
       'controller_name' => 'AdminMemberRegistController',
       'form' =>$form->createView(),
